@@ -2,3 +2,4 @@ game/
 .vscode/
 .venv/
 __*__/
+#keeps the folders that arent my code from going on github

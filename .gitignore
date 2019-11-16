@@ -1,0 +1,4 @@
+game/
+.vscode/
+.venv/
+__*__/

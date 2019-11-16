@@ -4,3 +4,4 @@
 2. `./.venv/bin/activate`
 3. `python3 -m pip install arcade`
 4. (if on Mac) `python3 -m pip install PyObjC`
+5. `python3 ./src/main.py`

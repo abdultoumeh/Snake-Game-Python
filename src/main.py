@@ -1,11 +1,10 @@
-import arcade
-from game import Game
-# [from <name>] import <name> [, <name>]* [as <name> [, <name>]* ]
+import arcade #imports the library which in this case is arcade
+from game import Game 
 
 # Run game here
 def main():
 
-    new_game = Game(640, 480, "Snake Game")
+    new_game = Game(640, 480, "Snake Game") #size of the arcade window
     arcade.run()
 
 

@@ -23,21 +23,18 @@ class Snake():
         # |     | => |   o | => | o - |
         # 
         # This makes it easier to insert another part when growing
-        self.prev_part = (x_init, y_init)
-        self.body = [(x_init, y_init)]
-
-    def __str__(self):
-        return(str([e for e in self.body]))
+        self.prev_part = (x_init, y_init) #where part that grows is at
+        self.body = [(x_init, y_init)] #all parts of the snake
 
     """Game Logic"""
-    def move(self):
+    def move(self): 
         if sum(self.direction) == 0:
-            return()
-        x, y = [self.head()[i] + self.direction[i] for i in range(2)]
+            return #no direction means it isn't movin and it's paused
+        x, y = [self.head()[i] + self.direction[i] for i in range(2)] #moves head in direction snake is going
         for part_i, part in enumerate(self.body):
             self.prev_part = self.body[part_i]
             self.body[part_i] = (x, y)
-            x, y = [i for i in self.prev_part]
+            x, y = [i for i in self.prev_part] #moves parts into places of next part
 
     # [] [] [] [] x
     #
@@ -45,37 +42,37 @@ class Snake():
     #
     # [] [] [] [] []
     def grow(self):
-        self.body.append(self.prev_part)
+        self.body.append(self.prev_part) #body gets attached to previous part
 
     # Direction Modes
     # 0 : down, 1 : left, 2 : up, 3 : right
     # (0, -1)   (-1, 0)   (0, 1)    (1, 0)
     def set_direction(self, direction_mode):
         if (direction_mode == 5):
-            self.direction = (0, 0)
+            self.direction = (0, 0) #makes sure snake stays in place
         elif (direction_mode % 2):
-            self.direction = (direction_mode - 2, 0)
+            self.direction = (direction_mode - 2, 0) 
         else:
             self.direction = (0, direction_mode - 1)
-
+                    #makes sure snake moves one direction at a time
     def head(self):
-        return(self.body[0])
+        return(self.body[0]) #head of the snake
 
     def get_body(self):
-        return(self.body)
+        return(self.body) #returnall parts of the snake
 
     def get_part(self, i):
-        return(self.body[i])
+        return(self.body[i]) #returns position of a part of the snake
 
     def __len__(self):
-        return(len(self.body))
+        return(len(self.body)) #return how many parts the snake has
 
     """Display Info"""
     def clear(self):
         self.prev_part = (self.x_init, self.y_init)
         self.body = [self.prev_part]
-        self.direction = (0, 0)
+        self.direction = (0, 0) #resets the snake starting position with just the head of the snake
 
     def draw(self):
         for part in self.body:
-            arcade.draw_xywh_rectangle_filled(part[0]*16, part[1]*16, 16, 16, arcade.color.BLACK)
+            arcade.draw_xywh_rectangle_filled(part[0]*16, part[1]*16, 16, 16, arcade.color.BLACK) #draws the snake itself

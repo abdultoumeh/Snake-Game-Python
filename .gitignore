@@ -2,4 +2,5 @@ game/
 .vscode/
 .venv/
 __*__/
+.DS_Store
 #keeps the folders that arent my code from going on github
